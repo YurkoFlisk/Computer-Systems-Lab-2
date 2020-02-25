@@ -156,39 +156,48 @@ int main()
 	uint32_t n1, n2;
 	while (true)
 	{
-		cout << "0 - exit" << endl;
-		cout << "1 - unsigned 32-bit integer multiplication" << endl;
-		cout << "2 - unsigned 32-bit integer division" << endl;
-		cout << "3 - 32-bit floating-point multiplication" << endl;
-		cout << "Enter operation: ";
-		cin >> op;
-		if (op == 0)
-			break;
-		if (op == 1)
+		try
 		{
-			cout << "Enter multiplicand: ";
-			cin >> n1;
-			cout << "Enter multiplier: ";
-			cin >> n2;
-			mul(n1, n2);
+			cout << "0 - exit" << endl;
+			cout << "1 - unsigned 32-bit integer multiplication" << endl;
+			cout << "2 - unsigned 32-bit integer division" << endl;
+			cout << "3 - 32-bit floating-point multiplication" << endl;
+			cout << "Enter operation: ";
+			cin >> op;
+			if (op == 0)
+				break;
+			if (op == 1)
+			{
+				cout << "Enter multiplicand: ";
+				cin >> n1;
+				cout << "Enter multiplier: ";
+				cin >> n2;
+				mul(n1, n2);
+			}
+			else if (op == 2)
+			{
+				cout << "Enter dividend: ";
+				cin >> n1;
+				cout << "Enter divisor: ";
+				cin >> n2;
+				div(n1, n2);
+			}
+			else if (op == 3)
+			{
+				cout << "Enter first number: ";
+				cin >> fn1;
+				cout << "Enter second number: ";
+				cin >> fn2;
+				fmul(fn1, fn2);
+			}
+			else
+				cout << "Unknown command, try again";
+			cout << "***********************************************************" << endl;
 		}
-		else if (op == 2)
+		catch (const std::exception& ex)
 		{
-			cout << "Enter dividend: ";
-			cin >> n1;
-			cout << "Enter divisor: ";
-			cin >> n2;
-			div(n1, n2);
+			cout << ex.what() << endl;
 		}
-		else if (op == 3)
-		{
-			cout << "Enter first number: ";
-			cin >> fn1;
-			cout << "Enter second number: ";
-			cin >> fn2;
-			fmul(fn1, fn2);
-		}
-		cout << "***********************************************************" << endl;
 	}
 	return 0;
 }
